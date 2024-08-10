@@ -60,3 +60,50 @@ sr.reveal(".port_card", { origin: "left", interval: 300});
 
 sr.reveal(".skill_top", { origin: "top" });
 sr.reveal(".skill_card", { origin: "right", interval: 300});
+
+// Submit Form
+
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    const result = document.getElementById('result');
+    result.innerHTML = "Please wait...";
+
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            access_key: 'c50c8bec-ff14-446d-8612-3624e52162ff',
+            ...object
+        })
+    })
+    .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+            result.innerHTML = json.message;
+            result.classList.remove("text-gray-500");
+            result.classList.add("text-green-500");
+        } else {
+            result.innerHTML = json.message;
+            result.classList.remove("text-gray-500");
+            result.classList.add("text-red-500");
+        }
+    })
+    .catch((error) => {
+        console.log(error);
+        result.innerHTML = "Something went wrong!";
+    })
+    .finally(() => {
+        this.reset();
+        setTimeout(() => {
+            result.style.display = "none";
+        }, 3000);
+    });
+});
