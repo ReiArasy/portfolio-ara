@@ -594,6 +594,10 @@ video {
   }
 }
 
+.static {
+  position: static;
+}
+
 .fixed {
   position: fixed;
 }
@@ -731,6 +735,14 @@ video {
 
 .mt-9 {
   margin-top: 2.25rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+.mt-11 {
+  margin-top: 2.75rem;
 }
 
 .block {
