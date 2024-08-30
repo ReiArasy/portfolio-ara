@@ -35,6 +35,18 @@ window.addEventListener('click', function(e){
     }
 });
 
+// Dark toggle 
+const darkToggle = document.querySelector('#dark-toggle');
+const html = document.querySelector('html');
+
+darkToggle.addEventListener('click', function() {
+   if (darkToggle.checked) {
+    html.classList.add('dark');
+   } else {
+    html.classList.remove('dark');
+   }
+});
+
 // Scrool Reveral Animation
 
 const sr = ScrollReveal({

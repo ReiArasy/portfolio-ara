@@ -1,10 +1,10 @@
-@import "tailwindcss/base";
+/* @import "tailwindcss/base";
 @import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import "tailwindcss/utilities"; */
 
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
 
 body {
     font-family: 'Inter', sans-serif;
@@ -38,3 +38,6 @@ body {
     @apply -rotate-45;
 }
 
+#dark-toggle:checked + label div.toggle-circle {
+    @apply translate-x-3;
+}
